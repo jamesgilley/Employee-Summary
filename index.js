@@ -16,3 +16,12 @@ class Employee {
     getRole = () => { console.log(`Hello, my role is Employee`); };
 
 }
+class Manager extends Employee {
+    constructor(name, id, email, officeNumber) {
+        super(name, id, email);
+        this.officeNumber = officeNumber;
+    }
+    getRole = () => {
+        console.log(`Hello, my role is Manager`);
+    };
+}
