@@ -258,4 +258,13 @@ const getEngineerInfo = (i) =>
     </html>
     
        
-     `;
+     `;const appendHTML = (html) => {
+
+        fs.appendFile('index.html', html, function (err) {
+          //console.log(err)
+          if (err) throw err
+          //console.log('saved')
+        })
+      }
+      
+      module.exports = { Employee, Engineer, Manager, Intern };
