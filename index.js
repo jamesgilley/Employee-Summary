@@ -39,3 +39,70 @@ class Engineer extends Employee {
         console.log(`Hello, my role is Engineer`);
     }
 }
+
+class Intern extends Employee {
+    constructor(name, id, email, school) {
+        super(name, id, email);
+        this.school = school;
+    }
+    getSchool = () => {
+        console.log(`My school is: ${this.school}`);
+    };
+    getRole = () => {
+        console.log(`Hello, my role is Intern`);
+    }
+}
+const promptUser1 = () =>
+    inquirer.prompt([{
+            type: 'input',
+            name: 'numEngineers',
+            message: 'How many Engineers on the team?',
+        },
+        {
+            type: 'input',
+            name: 'numInterns',
+            message: 'How many Interns on the team?',
+        },
+        {
+            type: 'input',
+            name: 'managerName',
+            message: 'What is the name of the manager?',
+        },
+        {
+            type: 'input',
+            name: 'managerId',
+            message: 'What is the Id of the manager?',
+        },
+        {
+            type: 'input',
+            name: 'managerEmail',
+            message: 'What is the Email Address of the manager?',
+        },
+        {
+            type: 'input',
+            name: 'managerOffice',
+            message: 'What is the office number of the manager?',
+        },
+    ])
+const getEngineerInfo = (i) =>
+    inquirer.prompt([{
+            type: 'input',
+            name: `engineerName${i}`,
+            message: 'What is the engineer name?'
+        },
+        {
+            type: 'input',
+            name: `engineerId${i}`,
+            message: 'What is the engineer Id?'
+        },
+        {
+            type: 'input',
+            name: `engineerEmail${i}`,
+            message: 'What is the engineer Email?'
+        },
+        {
+            type: 'input',
+            name: `engineerGithub${i}`,
+            message: 'What is the engineer Github Username?'
+        },
+    ])
