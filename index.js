@@ -183,4 +183,79 @@ const getEngineerInfo = (i) =>
             console.log(response)
           }
         }
+      }promptUser1()
+      .then(answers => {
+        writeFileAsync('index.html', generateHTML(answers))
+        return getEngineers(answers)
+          .then(x => {
+            return getInterns(answers)
+          })
+          .then((x) => {
+            console.log('answrrs', answers)
+    
+          })
+      })
+    
+    const generateHTML = (x) =>
+    
+      `
+     <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>repl.it</title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+      </head>
+      <body>
+      <style>
+      .manager {
+        background-color: blue;
+        width: 100%;
+        padding:5px;
+        border: 5px;
       }
+      .engineer {
+        background-color: yellow;
+        width: 100%;
+        padding:5px;
+        border: 5px;
+      }
+      .intern {
+        background-color: green;
+        width: 100%;
+        padding:5px;
+        border: 5px;
+      }
+      .mainContent {
+        border: 10px;
+      }
+    
+      .border{
+        width: 25%;
+          border-width:5px;  
+          border-style:solid;
+      }
+      </style>
+      
+     <h1>Team Roster</h1>
+    
+       <br/>
+       <div class="border">
+       <div class='manager'>
+       <h3 >Manager</h3>
+       </div>
+       <div class="mainContent">
+       <h3>managerName:${x.managerName}</h3>
+       <h3>managerId:${x.managerId}</h3>
+       <h3>managerEmail:${x.managerEmail}</h3>
+       <h3>managerOffice:${x.managerOffice}</h3>
+       <br/>
+       </div>
+       </div>
+    
+       </body>
+    </html>
+    
+       
+     `;
