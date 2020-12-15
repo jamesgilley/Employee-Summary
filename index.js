@@ -16,6 +16,7 @@ class Employee {
     getRole = () => { console.log(`Hello, my role is Employee`); };
 
 }
+
 class Manager extends Employee {
     constructor(name, id, email, officeNumber) {
         super(name, id, email);
@@ -24,4 +25,17 @@ class Manager extends Employee {
     getRole = () => {
         console.log(`Hello, my role is Manager`);
     };
+}
+
+class Engineer extends Employee {
+    constructor(name, id, email, github) {
+        super(name, id, email);
+        this.github = github;
+    }
+    getGithub = () => {
+        console.log(`My github username is: ${this.github}`);
+    };
+    getRole = () => {
+        console.log(`Hello, my role is Engineer`);
+    }
 }
