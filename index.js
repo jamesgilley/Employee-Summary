@@ -105,4 +105,82 @@ const getEngineerInfo = (i) =>
             name: `engineerGithub${i}`,
             message: 'What is the engineer Github Username?'
         },
-    ])
+    ]) async function getEngineers(x) {
+        let i = 0
+        while (i < x.numEngineers) {
+            let response = await getEngineerInfo(i)
+            if (response) {
+
+                let html = ` 
+         <div class="border">
+         <div class='engineer'>
+         <h3>Engineer</h3>
+         </div >
+         <div class="mainContent">
+         <p>Engineer Number:${i} Engineer Name: ${response[`engineerName${i}`]}</p> \n 
+         <p>Engineer Number:${i} Engineer Id: ${response[`engineerId${i}`]}</p> \n
+         <p>Engineer Number:${i} Engineer Email: ${response[`engineerEmail${i}`]}</p> \n
+         <p>Engineer Number:${i} Engineer Github: ${response[`engineerGithub${i}`]}</p> \n
+         <br/>
+          <br/>
+         </div>
+         </div>
+         `
+            appendHTML(html)
+      
+            i++
+          }
+        }
+      }
+      
+      const getInternInfo = (i) =>
+        inquirer.prompt([
+          {
+            type: 'input',
+            name: `internName${i}`,
+            message: 'What is the intern name?'
+          },
+          {
+            type: 'input',
+            name: `internId${i}`,
+            message: 'What is the intern Id?'
+          },
+          {
+            type: 'input',
+            name: `internEmail${i}`,
+            message: 'What is the intern email?'
+          },
+          {
+            type: 'input',
+            name: `internSchool${i}`,
+            message: 'What is the intern school?'
+          },
+        ])
+      
+      async function getInterns(x) {
+        let i = 0;
+        //for(let i = -1; i<x.numInterns; i++)
+        while (i < x.numInterns) {
+          let response = await getInternInfo(i)
+          if (response) {
+            let html = `
+          <div class="border">
+          <div class='intern'>
+          <h3>Intern</h3>
+          </div>
+         <div class='mainContent'>
+          <p>Intern Number:${i} Intern Name: ${response[`internName${i}`]}</p> \n
+          <p>Intern Number:${i} Intern Id: ${response[`internId${i}`]}</p> \n
+          <p>Intern Number:${i} Intern Email: ${response[`internEmail${i}`]}</p> \n
+          <p>Intern Number:${i} Intern School: ${response[`internSchool${i}`]}</p> \n
+          <br/>
+          <br/>
+          </div>
+          </div>
+          `
+            appendHTML(html)
+            i++
+            console.log(response)
+          }
+        }
+      }
